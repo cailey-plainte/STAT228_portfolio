@@ -5,10 +5,10 @@ This portfolio showcases my growing experience in data science, including sourse
 ## Education
 
 **Bachelor of Science in Biology**
-Simmons University 
-Expected Graduation Year: 2027
-Minor in Sustainability
-Honors Program
+Simmons University, 
+Expected Graduation Year: 2027,
+Minor in Sustainability,
+Honors Program,
 
 ## Course Projects
 
