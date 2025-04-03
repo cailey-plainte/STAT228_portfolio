@@ -1,4 +1,4 @@
-# Cailey's STAT-288 Project Portfolio
+
 
 This portfolio showcases my growing experience in data science, including course projects and individual work drawing from the course materials.
 
