@@ -1,0 +1,159 @@
+---
+title: 'Plastic Pollution: A Data Wrangling Tutorial'
+author: "Cailey Plainte"
+date: "April 11th, 2025"
+output:
+  html_document:
+    df_print: paged
+    toc: TRUE
+    theme: cerulean
+    highlight: haddock
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(learner)
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+plastics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-01-26/plastics.csv') 
+```
+
+# Introduction
+
+Data wrangling is an essential skill for any data scientist, as it involves the process of selecting, transforming, and manipulating datasets to make them usable in data analysis.
+
+In this tutorial, we will introduce some of the core dplyr verbs utilized for data wrangling and introduce concepts such as:
+
+-   Selecting columns of interest from the dataset
+-   Filtering data based on desired conditions
+-   Arranging rows by a specific quality or variable
+-   Slicing the data to isolate a desired range of rows
+
+To do this, we will be using the dataset “plastics” that was derived from Break Free From Plastic’s 2019 and 2020 data on global waste cleanups. More information on this source can be found [here](https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-01-26/readme.md). This data highlights important aspects of plastic pollution by distinguishing between different types of plastic waste, such as PVC and polyester plastics, for example. It also records the companies that are the source of the plastic waste, the countries where the cleanups occurred, the number of cleanup events, and the number of volunteers participating. 13,380 observations were recorded globally over these two years. This data can provide interesting insights into the patterns behind the most common types of plastic pollution and potentially inform strategies to reduce plastic waste, making wrangling this dataset an important step in understanding the potential relationships between the variables.
+
+In this guided tutorial, we will be wrangling this dataset and using the product of our tidied data to create a visualization to draw conclusions about what the top 10 companies that produced plastic waste found in the United States in 2020 were. You will also be able to apply the knowledge gained from these exercises to further explore other aspects of this dataset as well as any other datasets you wish. **Let us get started!**
+
+# Tutorial
+
+### Filter and Select
+
+When wrangling data with a specific goal in mind, it is important to be able to pick out the rows and columns that you are interested in looking at. To do this, we use the functions filter() and select(). Filter allows you to give R a set of conditions for the rows you want to keep. Select() on the other hand is used to choose specific columns.
+
+It is also important to be able to perform a string of operations on a dataset at once to ensure that your code is efficient and readable. This is where the pipe operator (\|\>) comes in handy. Instead of saving each wrangling step individually, the pipe allows you to chain multiple commands together. Here’s an example of how a pipe operator could be used to string the results of both the filter() and select() functions together to form a single dataframe.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+plastics_brazil <- plastics |> #This specifies the dataset we are using.
+  filter(country == "Brazil", year == 2019) |> #This filters the rows to only show data from Brazil
+  select(country, year, parent_company, grand_total) #This specifies what variables we want to keep
+```
+
+In this example, I demonstrate how to use pipe operators to link together the different functions we are using. This code results in a dataframe called “plastics_brazil” that contains the variables “country”, “year”, “parent_company”, and “grand_total” for Brazil in 2019.
+
+#### Exercise #1
+
+To test out your knowledge of how to use pipe operators to sequence multiple operations, try using the filter() and select() functions to look for country, year, parent company, and grand total of all types of plastic for the United States in 2020. Name this dataframe plastics_USOA. As a challenge, also attempt to filter out any rows with a grand total of 0 pieces of plastic, as these rows are unimportant to our investigation.
+
+Your code should end up looking like this:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+plastics_USOA <- plastics |>  
+  filter(country == "United States of America", grand_total != 0, year == 2020) |>
+  select(country, year, parent_company, grand_total) 
+```
+
+#### Helpful Tips
+
+For more advanced filtering of this dataset, you could remove any parent company values that are not a specific company, such as "null", "NULL", Grand Total", "Unbranded" and "Assorted". This will narrow down our dataset to show only individual companies so we can better draw conclusions about the source of plastic pollution at the end of this tutorial. Since you're just getting started, here's an example of what this more advanced code would look like:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+plastics_USOA <- plastics |>  
+  filter(country == "United States of America", grand_total != 0, year == 2020) |>
+  filter(!parent_company %in% c("null","NULL","Grand Total","Unbranded", "Assorted")) |>
+  select(country, year, parent_company, grand_total)
+```
+
+A useful tip to identify if your code works is to use head() to observe the first few rows of your data. This is what that would look like for this exercise:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+head(plastics_USOA)
+```
+
+### Arrange and Slice
+
+We've already practiced using the filter() and select() functions, now let's go over some more! The final goal of this tutorial is to use our growing knowledge of data wrangling to determine what the top 10 companies are that are sources of plastic pollution found in the United States in 2020 clean-ups. The previous exercise allowed us to narrow down the dataset to the country and year we are observing, but how would we determine which rows contain the top 10 values for grand total plastic waste?
+
+To do this, we have to utilize the dplyr functions arrange() and slice(). The arrange() function allows you to arrange a specified column of data in ascending to descending order. This is useful when looking for the highest or lowest values of something in a dataset to draw meaningful conclusions and make more detailed visualizations. For example, this could be used to determine which companies pollute the most.
+
+When using this arranged data to draw conclusions, it’s likely that you might want to take a closer look at a specific range of these values, rather than the entire dataset. For this purpose, you would use the function slice(). This allows you to cut a specified range of values out of the dataset and disregard the additional rows. This is especially useful when you want to create visualizations on a certain range of points rather than the entire dataset, which has the potential to make busy and crowded graphs depending on your specific goals.
+
+Let us use the plastics_brazil dataset as an example:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+plastics_brazil <- plastics |> 
+  filter(country == "Brazil", year == 2019) |> 
+  select(country, year, parent_company, grand_total) |>
+  arrange(desc(grand_total)) |> #This arranges the data in descending order by the grand total of plastic waste
+  slice(1:50) #This slices the dataset so it is only showing us rows 1 through 50. 
+```
+
+#### Exercise #2
+
+To test our your knowledge of arranging and slicing a dataset to observe a certain range and arrangement of the data, try using the arrange() and slice() functions to find the top 10 companies with the most plastic waste found in these clean-ups.
+
+Use your knowledge of pipe operators to build off of your code from the previous exercise and feel free to utilize the demonstrated advanced filtering of the parent company variable to get your desired results.
+
+Your final code should end up looking something like this:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+plastics_USOA <- plastics |>  
+  filter(country == "United States of America", grand_total != 0, year == 2020) |>
+  filter(!parent_company %in% c("null","NULL","Grand Total","Unbranded", "Assorted")) |>
+  select(country, year, parent_company, grand_total) |>
+  arrange(desc(grand_total)) |> 
+  slice(1:10)
+```
+
+#### Additional Tips
+
+Another way you could slice the dataset to find the same results is by using slice_head(). This function will take the start of the dataset up until your specified number. Here's how that would look:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+plastics_USOA <- plastics |>  
+  filter(country == "United States of America", grand_total != 0, year == 2020) |>
+    filter(!parent_company %in% c("null","NULL","Grand Total","Unbranded", "Assorted")) |>
+  select(country, year, parent_company, grand_total) |>
+  arrange(desc(grand_total)) |> 
+  slice_head(n = 10) #This takes the first 10 rows in our arranged dataset
+```
+
+### Visualizing our Data
+
+**Congratulations!** Through exercises #1 and #2, you were able to wrangle our data and create a final dataset that displays the top companies identified at plastic pollution clean-ups in the United States during the year 2020. Now that you have arranged and sliced the data to only include the top 10 companies, we can start to draw meaningful conclusions about our data through visualizations. Below is a bar graph created using the final plastics_USOA dataset:
+
+```{r fig.align="center", message=FALSE, warning=FALSE, echo=FALSE}
+ggplot(plastics_USOA,
+       aes(x = reorder(parent_company, -grand_total), y = grand_total)) +
+  geom_bar(stat = "identity", fill = "darkgreen") +
+  labs(
+    title = "The Top 10 Plastic Polluters Found During Clean-Ups",
+    subtitle = "Data from The United States in 2020",
+    x = "Parent Company",
+    y = "Total Items of Plastic Waste"
+  ) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1, size = 5.5),
+      plot.title = element_text(size = 12),
+      axis.title.x = element_text(size = 8),
+      axis.title.y = element_text(size = 8)
+      )
+
+```
+
+From the bar graph created with your wrangled data, we can begin to make inferences about what kinds of companies produce the most plastic identified during waste clean-ups. You can see that the top 5 companies listed are all companies that produce single-use plastic bags and bottles. Being able to draw inferences from data after tidying and visualizing it helps give backing to further data exploration. With these results, it would be interesting to wrangle the data in a way that allows us to explore what type of plastic waste is found most often, potentially linking the most common types of plastic waste to the top companies contributing to plastic waste found during clean-ups.
+
+# Conclusion
+
+This tutorial demonstrated the importance of thorough data wrangling in preparing datasets for meaningful analysis. By wrangling the dataset, we were able to focus on the top 10 companies whose products showed up most often during plastic pollution clean-ups across the United States in 2020. Once we visualized that data in a bar graph, we were able to identify that the biggest contributors to plastic waste are companies that produce and sell single-use items like plastic bags and bottles. These are the everyday products we see all the time, making the implications of this dataset incredibly relevant to everyday consumers like us.
+
+Beyond identifying the companies that contribute to plastic waste, this visualization opens the door to deeper analysis. The ability to link specific companies to the types of plastic waste they produce is just one example of the places you can take your growing data wrangling knowledge. As you continue your data wrangling journey, consider how you can apply the skills you have learned to further analyze this dataset, as well as other datasets you may encounter in the future.
