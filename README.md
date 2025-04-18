@@ -5,9 +5,9 @@ This portfolio's purpose is to showcase my growing experience in data science, i
 
 ### About Me
 
-Name: Cailey Plainte
-Pronouns: She/Her
-Email: plainte@simmons.edu
+- Name: Cailey Plainte
+- Pronouns: She/Her
+- Email: plainte@simmons.edu
 
 ### Education
 
