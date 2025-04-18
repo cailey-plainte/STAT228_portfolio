@@ -21,7 +21,7 @@ Email: plainte@simmons.edu
 
 ### Interests 
 
-I am currently majoring in biology with a focus in environmental science and I hope to pursue graduate school in entomology or conservation biology. Taking this data science class will aid me in the likely data wranglig and visualization problems that I encounter as I aim to reach this goal.
+I am currently majoring in biology with a focus in environmental science and I hope to pursue graduate school in entomology or conservation biology. Taking this data science class will aid me in the likely data tidying and visualization problems that I encounter as I aim to reach this goal.
 
 ### Technical Skills
 
