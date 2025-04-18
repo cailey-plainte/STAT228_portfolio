@@ -1,15 +1,35 @@
 
-# Welcome to Cailey's Data Science Portfolio
+## Site Purpose
 
 This portfolio showcases my growing experience in data science, including course projects and individual work drawing from the course materials.
 
-## Education
+## Biographical Information
+
+### About Me
+
+Name: Cailey Plainte
+Pronouns: She/Her
+Email: plainte@simmons.edu
+
+### Education
 
 **Bachelor of Science in Biology** at Simmons University 
 
 - Expected Graduation Year: 2027
 - Minor in Sustainability
 - Honors Program
+
+### Interests 
+
+I am currently majoring in biology with a focus in environmental science and I hope to pursue graduate school in entomology or conservation biology. Taking this data science class will aid me in the likely data wranglig and visualization problems that I encounter as I aim to reach this goal.
+
+### Technical Skills
+
+- R Studio
+- Benthic Macroinvertebrate Sampling
+- Salinity Testing
+- Tree Planting/Care
+- Aseptic Technique 
 
 ## Course Projects
 
