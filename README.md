@@ -1,5 +1,5 @@
 
-This portfolio showcases my growing experience in data science, including course projects and individual work drawing from the course materials.
+This portfolio's purpose is to showcase my growing experience in data science, including course projects and individual work that draws from the course materials.
 
 ## Biographical Information
 
