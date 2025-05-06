@@ -41,10 +41,9 @@ Plastic Pollution: A Data Wrangling Tutorial 🌎
 - Project can be found at: https://cailey-plainte.github.io/STAT228_portfolio/2025/04/11/Plastics.html 
 - An exploration of data wrangling techniques in a tutorial format, including exercises and answers for the reader to follow along with
 
-Fueling the Footprint: Exploring How Parent Entity and Commoditiy Types Impact Carbon Emissions 
-
+Fueling the Footprint: Exploring How Parent Entity and Commoditiy Types Impact Carbon Emissions 🏭
 - Project can be found at: https://cailey-plainte.github.io/STAT228_portfolio/2025/05/06/Fueling-The-Footprint.html
-- Presentation can be found at: 
+- Presentation can be found at: https://cailey-plainte.github.io/STAT228_portfolio/Copy%20of%20Minimalist%20Green%20Slides%20Infographics%20by%20Slidesgo.pdf
 - This project explored the relationship between parent entity type, commodity produced, and carbon emissions
 - A classification decision tree was developed to predict if a certain annual carbon emissions report would be classified as above or below the average emissions amount for that year
 - It was determined that, while these factors produce predictive results that are better than random guessing, the addition of more factors would be needed to create a more reliable model
