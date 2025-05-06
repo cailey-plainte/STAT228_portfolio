@@ -43,7 +43,8 @@ Plastic Pollution: A Data Wrangling Tutorial 🌎
 
 Fueling the Footprint: Exploring How Parent Entity and Commoditiy Types Impact Carbon Emissions 
 
-- Project can be found at: https://cailey-plainte.github.io/STAT228_portfolio/2025/05/06/Fueling-The-Footprint.html 
+- Project can be found at: https://cailey-plainte.github.io/STAT228_portfolio/2025/05/06/Fueling-The-Footprint.html
+- Presentation can be found at: 
 - This project explored the relationship between parent entity type, commodity produced, and carbon emissions
 - A classification decision tree was developed to predict if a certain annual carbon emissions report would be classified as above or below the average emissions amount for that year
 - It was determined that, while these factors produce predictive results that are better than random guessing, the addition of more factors would be needed to create a more reliable model
