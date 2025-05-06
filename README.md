@@ -33,8 +33,8 @@ I am currently majoring in biology with a focus in environmental science and I h
 
 The Buzz on Colony Loss: What Colony Numbers Tell Us About Loss Percentages 🐝
 
-- Project can be found at: https://cailey-plainte.github.io/STAT228_portfolio/2025/03/11/Colony-Loss.html
-- Explored the relationship between colony size and average percentage of colony loss using R. 
+- Project can be found at [here](https://cailey-plainte.github.io/STAT228_portfolio/2025/03/11/Colony-Loss.html
+- Explored the relationship between colony size and average percentage of colony loss using R.) 
 
 Plastic Pollution: A Data Wrangling Tutorial 🌎
 
