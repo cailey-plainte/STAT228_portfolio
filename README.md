@@ -38,3 +38,9 @@ The Buzz on Colony Loss: What Colony Numbers Tell Us About Loss Percentages 🐝
 Plastic Pollution: A Data Wrangling Tutorial 🌎
 
 - An exploration of data wrangling techniques in a tutorial format, including exercises and answers for the reader to follow along with
+
+Fueling the Footprint: Exploring How Parent Entity and Commoditiy Types Impact Carbon Emissions 
+
+- This project explored the relationship between parent entity type, commodity produced, and carbon emissions
+- A classification decision tree was developed to predict if a certain annual carbon emissions report would be classified as above or below the average emissions amount for that year
+- It was determined that, while these factors produce predictive results that are better than random guessing, the addition of more factors would be needed to create a more reliable model
